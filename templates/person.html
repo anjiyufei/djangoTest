@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>列表</title>
+        <link rel="stylesheet" href="/static/test.css"/>
+    </head>
+    <body>
+        <span class="title">person表</span>
+        <form>
+            姓名: <input type="text" id="username" name="username"> <br>
+            密码: <input type="text" id="password" name="password"> <br>
+            年龄: <input type="text" id="age" name="age"> <br>
+            <button type="button" id='sum' onclick="add()">添加</button>
+        </form>
+
+        <script type="text/javascript" src="/static/jquery-1.8.3.min.js"></script>
+        <script>
+
+                function add() {
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+                    var age = $("#age").val();
+                    console.log(username)
+                    if(username === ''){
+                        alert('姓名不能为空！')
+                    }else{
+                        $.ajax({
+                            type:"POST",
+                            url:"addPerson.html",
+                            dataType:"json",
+                            data:{
+                                'username':username,
+                                'password':password,
+                                'age':age
+                            },
+                            success:function(data){
+                                console.log(data)
+                            }
+                        });
+                    }
+                }
+        </script>
+    </body>
+</html>
