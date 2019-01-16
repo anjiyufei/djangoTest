@@ -27,6 +27,9 @@ def addPerson(request):
 
     #user_list = models.Person.objects.filter(age>10).values('id','username','age')
     #user_list = Person.objects.filter(age__gt=10).values('id','username','password','age')
-    data = json.dumps(list(user_list))
-    res = {"code":0,"data":data}
+    #data = json.dumps(list(user_list))
+    #res = {"code":0,"data":data}
+    res = {"code": 0, "data": list(user_list)}
+    #res = {"code":0,"data":list(user_list)}
+    #res = json.dumps(res)
     return JsonResponse(res,safe=False)
